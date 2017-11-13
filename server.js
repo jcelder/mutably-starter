@@ -1,12 +1,15 @@
 const express = require('express')
 const fetch = require('node-fetch')
+const ejs = require('ejs');
 
 const app = express()
 
 app.use(express.static('public'))
 
 // set 'html' as the engine, using ejs's renderFile function
-app.set('view engine', 'pug')
+
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
   fetch('https://mutably.herokuapp.com/books', {
