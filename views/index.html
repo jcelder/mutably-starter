@@ -13,9 +13,17 @@
         <a class="navbar-brand" href="/">Mutably Front-end</a>
       </nav>
       <div class="panel panel-default">
-        <div class="panel-heading">[Your Chosen Resource]</div>
+        <div class="panel-heading"><h1>Books</h1></div>
+        <div class="add-book">
+          <input type="text" name="title" required placeholder="Enter book title" id="title">
+          <input type="text" name="author" required placeholder="Enter book author" id="author">
+          <input type="text" name="release date" required placeholder="Enter book release date" id="releaseDate">
+          <input type="text" name="image" required placeholder="Enter book image url" id="image">
+          <button class="btn btn-primary" id="addBook">Add Book</button>
+        </div>
+        <button id="list-books" class="btn btn-primary" type="submit" url="/list-books">Get All Books</button>
         <ul class="list-group">
-          <!-- your resource items here -->
+          <!-- Book Information Added Here -->
         </ul>
       </div>
     </div>
