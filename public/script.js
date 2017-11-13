@@ -11,7 +11,6 @@ $(document).ready(() => {
     }).then((json) => {
       return json.books
     }).then((books) => {
-      console.log(books)
       books.map((book) => {
         const title = book.title
         const author = book.author
