@@ -1,4 +1,6 @@
 const express = require('express')
+const fetch = require('node-fetch')
+
 const app = express()
 
 app.use(express.static('public'))
@@ -6,11 +8,14 @@ app.use(express.static('public'))
 // set 'html' as the engine, using ejs's renderFile function
 app.set('view engine', 'pug')
 
-app.get('/', (request, response) => {
+app.get('/', (req, res) => {
   fetch('https://mutably.herokuapp.com/books', {
-    method: 'get'
-  }).then((books) => {
-    response.render('index', { books: books })
+    method: 'get',
+  }).then((apiRes) => {
+    return apiRes.json()
+  }).then((json) => {
+    console.log(json)
+    res.render('index', { books: json.books })
   })
 })
 
