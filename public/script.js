@@ -23,7 +23,7 @@ $(document).ready(() => {
           <span class="book-releaseDate">Release Date: ${releaseDate}</span>
           <img src='${image}' class="book-image">
           </li>`
-        $('.list-group').append(bookHtml)
+        $('.list-group').prepend(bookHtml)
       })
     })
   }
@@ -31,4 +31,31 @@ $(document).ready(() => {
   $('#list-books').on('click', () => {
     listBooks()
   })
+
+  const addBookAjax = function(e){
+    e.preventDefault()
+    $.ajax({
+          url: 'https://mutably.herokuapp.com/books',
+          type: 'POST',
+          data: {
+                  'title':$('#title').val(),
+                  'author':$('#author').val(),
+                  'image':$('#image').val(),
+                  'releaseDate':$('#releaseDate').val()
+                },
+          success: function (data) {
+            listBooks()
+          }
+      });
+  }
+
+  $('#addBook').on({
+    click: function(e){
+      if($('#title').val() && $('#author').val() && $('#releaseDate').val() && $('#image').val()){
+         addBookAjax(e)
+       } else {
+        $( ".add-book" ).append('<p>Must enter a movie</p>')
+       }
+    }
+  });
 });
