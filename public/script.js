@@ -29,6 +29,8 @@ $(document).ready(() => {
                    <span class="book-releaseDate">Release Date: ${releaseDate}</span>
                  </div>
              </div>
+             <button type="submit" class="btn btn-block btn-info btn-edit">Edit</button>
+             <button type="submit" class="btn btn-block btn-danger btn-delete">Delete</button>
           </div>
         </li>`
         $('.list-group').prepend(bookHtml)
