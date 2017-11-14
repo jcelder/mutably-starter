@@ -16,12 +16,21 @@ $(document).ready(() => {
         const author = book.author
         const releaseDate = book.releaseDate
         const image = book.image
-        const bookHtml = `<li class="book-info">
-          <span class="book-title">Title: ${title}</span>
-          <span class="book-author">Author: ${author}</span>
-          <span class="book-releaseDate">Release Date: ${releaseDate}</span>
-          <img src='${image}' class="book-image">
-          </li>`
+        const bookHtml = `
+        <li class="book-info">
+          <div class="container-fluid">
+             <div class="row">
+             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                 <img src='${image}' class="book-image">
+             </div>
+                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                   <span class="book-title">Title: ${title}</span>
+                   <span class="book-author">Author: ${author}</span>
+                   <span class="book-releaseDate">Release Date: ${releaseDate}</span>
+                 </div>
+             </div>
+          </div>
+        </li>`
         $('.list-group').prepend(bookHtml)
       })
     })
