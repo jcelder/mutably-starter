@@ -12,12 +12,13 @@ $(document).ready(() => {
       return json.books
     }).then((books) => {
       books.map((book) => {
+        const id = book._id
         const title = book.title
         const author = book.author
         const releaseDate = book.releaseDate
         const image = book.image
         const bookHtml = `
-        <li class="book-info">
+        <li class="book-info" id="${id}">
           <div class="container-fluid">
              <div class="row">
              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -68,4 +69,15 @@ $(document).ready(() => {
        }
     }
   });
+
+$(document).on('click','.btn-edit', function () {
+  const book = $(this).parent().parent()
+  const bookId = book.attr('id')
+
+
+  console.log(book)
+  // book.querySelectorAll('.book-title')
+})
+
+
 });
