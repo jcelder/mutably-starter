@@ -73,9 +73,11 @@ $(document).ready(() => {
 $(document).on('click','.btn-edit', function () {
   const book = $(this).parent().parent()
   const bookId = book.attr('id')
+$(this).replaceWith('<button type="submit" class="btn btn-block btn-success btn-save">Save</button>')
+book.find('.book-title').replaceWith('<input type="text" name="editTitle" required placeholder="Enter book title" id="edit-title">')
+book.find('.book-author').replaceWith('<input type="text" name="editAuthor" required placeholder="Enter book author" id="edit-author">')
+book.find('.book-releaseDate').replaceWith('<input type="text" name="editReleaseDate" required placeholder="Enter book release date" id="editReleaseDate">')
 
-
-  console.log(book)
   // book.querySelectorAll('.book-title')
 })
 
