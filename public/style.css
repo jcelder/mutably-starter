@@ -1,4 +1,9 @@
 /*Custom styles here*/
+
+/** {
+  border: 1px solid black;
+}*/
+
 .book-image {
   height: 100px;
   width: 100px;
@@ -6,4 +11,12 @@
 
 .list-group {
   list-style: none;
+}
+
+.edit-text {
+  width: 80%;
+}
+
+.book-info {
+  width: 100%;
 }
