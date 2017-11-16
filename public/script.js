@@ -4,6 +4,7 @@ console.log("Sanity Check: JS is working!");
 $(document).ready(() => {
 
   const listBooks = () => {
+    $('.list-group').empty()
     fetch('https://mutably.herokuapp.com/books', {
       method: 'get',
     }).then((apiRes) => {
@@ -73,8 +74,6 @@ const editBook = (id, bookObject) => {
         // if (response.ok) {
         //   return response.body
         // }
-    }).then((body) => {
-      return body
     })
 }
 
@@ -104,7 +103,7 @@ $('.list-group').on('click','.btn-edit', function () {
     book.find('.book-text').append(`<input type="text" name="editImage" required value="${bookImageUrl}" id="edit-image" class="edit-text">`)
 })
 
-$('.list-group').on('click','.btn-save', function () {
+$('.list-group').on('click','.btn-save', async function () {
   const book = $(this).parent().parent()
   const bookId = book.attr('id')
   const editTitle = book.find('#edit-title').val()
@@ -120,14 +119,17 @@ $('.list-group').on('click','.btn-save', function () {
     releaseDate: editRelease
   }
 
-  const bookData = editBook(bookId, bookObject)
-  console.log(bookData)
+  const bookData = await editBook(bookId, bookObject)
+  listBooks()
 })
 
-$(document).on('click', '.btn-delete', function() {
+$('.list-group').on('click', '.btn-delete', async function() {
   const book = $(this).parent().parent()
   const bookId = book.attr('id')
-  $(book).empty()
+  await fetch(`https://mutably.herokuapp.com/books/${bookId}`, {
+    method: 'delete',
+  })
+  listBooks()
 })
 
 });
